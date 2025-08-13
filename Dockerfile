@@ -44,8 +44,14 @@ RUN mkdir -p logs admin cache && \
     chmod -R 777 /var/www/html/admin && \
     chmod -R 755 /var/www/html/cache
 
-# Inicializar base de datos SQLite automáticamente
-RUN php public/admin/init-db.php
+# Crear script de inicialización
+RUN echo '#!/bin/bash\n\
+if [ ! -f /var/www/html/admin/users.db ]; then\n\
+    echo "Inicializando base de datos..."\n\
+    php /var/www/html/public/admin/init-db-simple.php\n\
+fi\n\
+exec apache2-foreground' > /usr/local/bin/start.sh && \
+chmod +x /usr/local/bin/start.sh
 
 # Configurar Apache para servir desde el directorio public
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf && \
@@ -58,4 +64,4 @@ RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /e
 EXPOSE 80
 
 # Comando de inicio
-CMD ["apache2-foreground"]
+CMD ["/usr/local/bin/start.sh"]
