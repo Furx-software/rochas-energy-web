@@ -1,4 +1,4 @@
-FROM php:8.1-cli
+FROM php:8.1-apache
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
@@ -7,16 +7,20 @@ RUN apt-get update && apt-get install -y \
     unzip \
     nodejs \
     npm \
+    libzip-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar extensiones PHP necesarias
-RUN docker-php-ext-install pdo pdo_sqlite
+RUN docker-php-ext-install pdo pdo_sqlite zip
+
+# Habilitar mod_rewrite para Apache
+RUN a2enmod rewrite
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Establecer directorio de trabajo
-WORKDIR /app
+WORKDIR /var/www/html
 
 # Copiar archivos del proyecto
 COPY . .
@@ -30,8 +34,19 @@ RUN npm run build-prod
 # Instalar dependencias de PHP
 RUN composer install --no-dev --optimize-autoloader
 
+# Crear directorios necesarios
+RUN mkdir -p logs admin cache && \
+    chmod -R 755 logs admin cache
+
+# Configurar permisos
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html
+
+# Copiar configuración personalizada de Apache
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+
 # Exponer puerto
-EXPOSE 8000
+EXPOSE 80
 
 # Comando de inicio
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+CMD ["apache2-foreground"]

@@ -8,7 +8,11 @@ services:
         value: production
       - key: PHP_VERSION
         value: 8.1
+      - key: APACHE_DOCUMENT_ROOT
+        value: /var/www/html/public
     disk:
       name: sqlite-data
-      mountPath: /app/admin
+      mountPath: /var/www/html/admin
       sizeGB: 1
+    healthCheckPath: /
+    autoDeploy: true
