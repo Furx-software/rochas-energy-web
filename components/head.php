@@ -10,14 +10,14 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
     <!-- Tailwind CSS -->
-    <link href="public/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     
     <!-- Optimizaciones móviles para botones -->
-    <link href="/public/css/mobile-optimizations.css" rel="stylesheet">
+    <link href="/css/mobile-optimizations.css" rel="stylesheet">
     
     <!-- CSS específico para servicios -->
     <?php if (isset($page) && $page === 'servicios'): ?>
-    <link href="/public/css/services.css" rel="stylesheet">
+    <link href="/css/services.css" rel="stylesheet">
     <?php endif; ?>
     
     <!-- Google Fonts -->

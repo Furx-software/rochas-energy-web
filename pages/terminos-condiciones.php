@@ -1,7 +1,7 @@
 <?php
 // Incluir componentes optimizados
-require_once 'components/home/button.php';
-require_once 'config/performance.php';
+require_once '../components/home/button.php';
+require_once '../config/performance.php';
 
 // Configurar metadatos para SEO
 $page_title = t('terms_title', 'meta');

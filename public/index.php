@@ -1,11 +1,11 @@
 <?php
 // Inicialización única de la aplicación
 session_start();
-require_once ../'config/app.php';
-require_once ../'config/languages.php';
-require_once ../'config/routes.php';
-require_once ../'config/performance.php';
-require_once ../'config/logging.php';
+require_once '../config/app.php';
+require_once '../config/languages.php';
+require_once '../config/routes.php';
+require_once '../config/performance.php';
+require_once '../config/logging.php';
 
 // Optimizar rendimiento
 optimizePerformance();
@@ -50,19 +50,19 @@ setCacheHeaders();
 ob_start();
 ?>
 
-<?php include ../'components/head.php'; ?>
+<?php include '../components/head.php'; ?>
 
 <div class="flex flex-col min-h-screen bg-white">
-    <?php include ../'components/navbar.php'; ?>
+    <?php include '../components/navbar.php'; ?>
 
     <main class="flex-1">
-        <?php include ../"pages/{$page}.php"; ?>
+        <?php include "../pages/{$page}.php"; ?>
     </main>
 
-    <?php include ../'components/footer.php'; ?>
+    <?php include '../components/footer.php'; ?>
     
     <!-- Banner de Cookies -->
-    <?php include ../'components/cookie-banner.php'; ?>
+    <?php include '../components/cookie-banner.php'; ?>
 </div>
 
 </body>

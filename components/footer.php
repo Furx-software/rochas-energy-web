@@ -1,11 +1,11 @@
-<?php require_once 'config/utilities.php'; ?>
+<?php require_once '../config/utilities.php'; ?>
 <footer class="bg-neutral-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <!-- Logo y descripción -->
             <div class="col-span-1 md:col-span-2 text-center md:text-left">
                 <div class="flex items-center justify-center md:justify-start mb-4">
-                    <img src="src/img/logo_rochas_rosa.png" alt="Rochas Logo" class="h-10 w-auto">
+                    <img src="/assets/img/logo_rochas_rosa.png" alt="Rochas Logo" class="h-10 w-auto">
                     <span class="ml-3 text-xl font-bold"><?php echo t('company_name', 'common'); ?></span>
                 </div>
                 <p class="text-neutral-400 mb-4 max-w-md mx-auto md:mx-0">

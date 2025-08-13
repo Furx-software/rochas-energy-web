@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Logo y título -->
         <div class="text-center">
             <div class="flex justify-center mb-4">
-                <img src="../src/img/logo_rochas_rosa.png" alt="Rochas Logo" class="h-16 w-auto">
+                <img src="../public/assets/img/logo_rochas_rosa.png" alt="Rochas Logo" class="h-16 w-auto">
             </div>
             <h2 class="text-3xl font-bold text-gray-900">Panel de Administración</h2>
             <p class="mt-2 text-sm text-gray-600">Rochas Energy - Acceso seguro</p>

@@ -1,6 +1,6 @@
 <?php
-require_once 'config/languages.php';
-require_once 'config/routes.php';
+require_once '../config/languages.php';
+require_once '../config/routes.php';
 
 $current_lang = getCurrentLanguage();
 
@@ -35,7 +35,7 @@ $language_config = [
             <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="/" class="flex items-center">
-                    <img src="src/img/logo_rochas_rosa.png" alt="Rochas Logo" class="h-10 w-auto">
+                    <img src="/assets/img/logo_rochas_rosa.png" alt="Rochas Logo" class="h-10 w-auto">
                     <span class="ml-3 text-xl font-bold text-neutral-800"><?php echo t('company_name', 'common'); ?></span>
                 </a>
             </div>

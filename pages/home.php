@@ -1,11 +1,11 @@
 <?php
 // Incluir componentes
-require_once 'components/home/hero-section.php';
-require_once 'components/home/content-section.php';
-require_once 'components/home/button.php';
-require_once 'components/home/testimonial-card.php';
-require_once 'components/home/skeleton-loader.php';
-require_once 'config/testimonials.php';
+require_once '../components/home/hero-section.php';
+require_once '../components/home/content-section.php';
+require_once '../components/home/button.php';
+require_once '../components/home/testimonial-card.php';
+require_once '../components/home/skeleton-loader.php';
+require_once '../config/testimonials.php';
 ?>
 
 <!-- Hero Section -->

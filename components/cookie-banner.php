@@ -1,5 +1,5 @@
 <?php
-require_once 'config/cookies.php';
+require_once '../config/cookies.php';
 
 // Verificar si ya se ha aceptado las cookies
 $cookiesAccepted = areCookiesAccepted();

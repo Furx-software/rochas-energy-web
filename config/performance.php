@@ -69,7 +69,7 @@ function applyPerformanceOptimizations() {
     }
     
     // Headers de compresión
-    if ($compression_config['gzip'] && extension_loaded('zlib')) {
+    if ($compression_config['gzip'] && extension_loaded('zlib') && !ob_get_level()) {
         if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false) {
             ob_start('ob_gzhandler');
         }
@@ -242,7 +242,8 @@ function optimizeOutput($html) {
 function compressOutput($content) {
     global $compression_config;
     
-    if ($compression_config['gzip'] && extension_loaded('zlib') && !ini_get('zlib.output_compression')) {
+    // Solo aplicar compresión si no hay un buffer activo y no hay compresión ya configurada
+    if ($compression_config['gzip'] && extension_loaded('zlib') && !ob_get_level() && !ini_get('zlib.output_compression') && !ini_get('output_handler')) {
         ini_set('zlib.output_compression', 1);
     }
     return $content;

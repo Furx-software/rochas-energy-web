@@ -6,7 +6,7 @@
 
 // Configuración de autenticación
 $auth_config = [
-    'db_path => getenv("RENDER") ? "/opt/render/project/src/admin/users.db" : "admin/users.db"',
+    'db_path' => (getenv("RENDER") !== false) ? "/opt/render/project/src/admin/users.db" : "admin/users.db",
     'session_timeout' => 3600, // 1 hora
     'max_login_attempts' => 5,
     'lockout_duration' => 900, // 15 minutos
