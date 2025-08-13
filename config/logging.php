@@ -7,7 +7,7 @@
 // Configuración de logging
 $logging_config = [
     'enabled' => true,
-    'log_directory' => 'logs',
+    'log_directory => getenv("RENDER") ? "/opt/render/project/src/logs" : "logs"',
     'max_log_size' => 10 * 1024 * 1024, // 10MB
     'max_log_files' => 5,
     'log_levels' => [

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: rochas-energy-web
+    env: php
+    buildCommand: composer install
+    startCommand: php -S 0.0.0.0:$PORT -t public
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: PHP_VERSION
+        value: 8.1
+    disk:
+      name: sqlite-data
+      mountPath: /opt/render/project/src/admin
+      sizeGB: 1

@@ -1,5 +1,10 @@
 {
     "require": {
         "phpmailer/phpmailer": "^6.10"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "mkdir -p logs admin cache"
+        ]
     }
 }

@@ -161,3 +161,8 @@ analytics_cache/
 # Archivos de configuración de desarrollo local
 local_config.php
 dev_config.php
+
+# Render specific
+public/admin/
+public/logs/
+public/cache/
