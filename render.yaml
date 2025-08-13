@@ -2,7 +2,7 @@ services:
   - type: web
     name: rochas-energy-web
     env: php
-    buildCommand: npm install
+    buildCommand: ./build.sh
     startCommand: php -S 0.0.0.0:$PORT -t public
     envVars:
       - key: ENVIRONMENT
