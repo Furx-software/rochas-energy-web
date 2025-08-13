@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     nodejs \
     npm \
     libzip-dev \
+    libsqlite3-dev \
+    pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar extensiones PHP necesarias
