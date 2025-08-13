@@ -1,0 +1,193 @@
+/* Optimizaciones móviles para botones */
+
+/* Botones principales - Responsive */
+.btn-primary-mobile {
+    @apply px-4 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold;
+    min-width: 200px;
+}
+
+@media (min-width: 640px) {
+    .btn-primary-mobile {
+        min-width: auto;
+    }
+}
+
+/* Botones con texto largo - Prevenir deformación */
+.btn-text-wrap {
+    @apply whitespace-nowrap;
+}
+
+/* Botones con iconos - Asegurar que no se deformen */
+.btn-with-icon {
+    @apply flex items-center justify-center;
+}
+
+.btn-icon {
+    @apply flex-shrink-0;
+}
+
+/* Optimizaciones específicas para móvil */
+@media (max-width: 639px) {
+    /* Reducir padding en móvil */
+    .btn-mobile-optimized {
+        @apply px-4 py-3 text-base;
+    }
+    
+    /* Asegurar que los botones no sean demasiado anchos */
+    .btn-mobile-optimized {
+        min-width: 200px;
+        max-width: 100%;
+    }
+    
+    /* Centrar texto en botones */
+    .btn-mobile-optimized {
+        @apply text-center justify-center;
+    }
+    
+    /* Reducir tamaño de iconos en móvil */
+    .btn-mobile-optimized svg {
+        @apply w-4 h-4;
+    }
+}
+
+/* Optimizaciones para tablets */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .btn-tablet-optimized {
+        @apply px-6 py-3 text-base;
+    }
+}
+
+/* Hover effects optimizados para touch */
+@media (hover: none) {
+    .btn-touch-optimized {
+        @apply active:scale-95;
+    }
+    
+    .btn-touch-optimized:hover {
+        @apply transform-none;
+    }
+}
+
+/* Animaciones suaves para botones */
+.btn-smooth {
+    @apply transition-all duration-300 ease-in-out;
+}
+
+/* Estados de carga para botones */
+.btn-loading {
+    @apply opacity-75 cursor-not-allowed;
+}
+
+.btn-loading:hover {
+    @apply transform-none;
+}
+
+/* Botones con gradientes optimizados */
+.btn-gradient-mobile {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600;
+    background-size: 200% 100%;
+    transition: background-position 0.3s ease;
+}
+
+.btn-gradient-mobile:hover {
+    background-position: right center;
+}
+
+/* Botones de llamada optimizados */
+.btn-call-mobile {
+    @apply inline-flex items-center justify-center;
+    @apply px-4 sm:px-6 py-3 sm:py-4;
+    @apply text-base sm:text-lg font-semibold;
+    @apply rounded-xl shadow-lg;
+    @apply transition-all duration-300;
+    @apply transform hover:scale-105;
+    min-width: 200px;
+}
+
+@media (min-width: 640px) {
+    .btn-call-mobile {
+        min-width: auto;
+    }
+}
+
+/* Botones de formulario optimizados */
+.btn-form-mobile {
+    @apply w-full sm:w-auto;
+    @apply px-4 sm:px-8 py-3 sm:py-4;
+    @apply text-base sm:text-lg font-semibold;
+    @apply rounded-xl;
+    @apply transition-all duration-300;
+}
+
+/* Botones de navegación móvil */
+.btn-nav-mobile {
+    @apply px-3 sm:px-4 py-2 sm:py-3;
+    @apply text-sm sm:text-base font-medium;
+    @apply rounded-lg;
+    @apply transition-colors duration-200;
+}
+
+/* Estados de focus para accesibilidad */
+.btn-focus-visible:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+}
+
+/* Botones deshabilitados */
+.btn-disabled {
+    @apply opacity-50 cursor-not-allowed;
+    @apply pointer-events-none;
+}
+
+/* Botones de acción principal */
+.btn-cta-mobile {
+    @apply relative inline-flex items-center justify-center;
+    @apply px-4 sm:px-8 py-3 sm:py-4;
+    @apply text-base sm:text-lg font-semibold;
+    @apply text-white;
+    @apply bg-gradient-to-r from-primary-500 to-primary-600;
+    @apply rounded-xl shadow-2xl;
+    @apply hover:shadow-3xl;
+    @apply transform hover:scale-105;
+    @apply transition-all duration-300;
+    @apply overflow-hidden;
+    min-width: 200px;
+}
+
+@media (min-width: 640px) {
+    .btn-cta-mobile {
+        min-width: auto;
+    }
+}
+
+/* Efecto hover interno para botones CTA */
+.btn-cta-mobile::before {
+    content: '';
+    @apply absolute inset-0;
+    @apply bg-gradient-to-r from-primary-600 to-primary-700;
+    @apply opacity-0;
+    @apply transition-opacity duration-300;
+}
+
+.btn-cta-mobile:hover::before {
+    @apply opacity-100;
+}
+
+/* Contenido del botón CTA */
+.btn-cta-content {
+    @apply relative z-10;
+    @apply flex items-center justify-center;
+    @apply text-center;
+}
+
+/* Texto del botón CTA */
+.btn-cta-text {
+    @apply whitespace-nowrap;
+}
+
+/* Icono del botón CTA */
+.btn-cta-icon {
+    @apply ml-2 w-4 h-4 sm:w-5 sm:h-5;
+    @apply group-hover:translate-x-1;
+    @apply transition-transform duration-300;
+    @apply flex-shrink-0;
+}

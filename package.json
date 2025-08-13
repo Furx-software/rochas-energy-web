@@ -1,0 +1,12 @@
+{
+  "name": "rochas-web",
+  "version": "1.0.0",
+  "description": "Sitio web moderno con HTML, Tailwind CSS y PHP",
+  "scripts": {
+    "build": "tailwindcss -i ./src/css/input.css -o ./public/css/style.css --watch",
+    "build-prod": "tailwindcss -i ./src/css/input.css -o ./public/css/style.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

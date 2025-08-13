@@ -1,0 +1,163 @@
+# Dependencias de Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Dependencias de Composer (PHP)
+vendor/
+composer.lock
+composer.phar
+
+# Archivos de configuración sensibles
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de configuración de email
+config/email.php
+
+# Base de datos SQLite
+admin/users.db
+admin/users.db-journal
+admin/users.db-wal
+admin/users.db-shm
+
+# Logs del sistema
+logs/
+*.log
+error_log
+access_log
+
+# Archivos de caché
+cache/
+*.cache
+.cache/
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Archivos de sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archivos de IDE/Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+
+# Archivos de backup
+*.bak
+*.backup
+*.old
+
+# Archivos de compilación
+dist/
+build/
+public/css/style.min.css
+public/js/main.min.js
+
+# Archivos de sesión PHP
+sess_*
+
+# Archivos de upload temporal
+uploads/temp/
+
+# Archivos de configuración local
+config/local.php
+config/database.local.php
+
+# Archivos de certificados SSL
+*.pem
+*.key
+*.crt
+*.csr
+
+# Archivos de configuración de servidor
+.htaccess.local
+apache.conf
+nginx.conf
+
+# Archivos de monitoreo
+*.pid
+*.pid.lock
+
+# Archivos de respaldo de base de datos
+*.sql
+*.sqlite
+*.db.bak
+
+# Archivos de configuración de desarrollo
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Archivos de testing
+coverage/
+.phpunit.result.cache
+tests/coverage/
+
+# Archivos de documentación temporal
+docs/temp/
+*.md.bak
+
+# Archivos de configuración de herramientas
+.eslintcache
+.stylelintcache
+.php-cs-fixer.cache
+
+# Archivos de configuración de Git
+.git/
+.gitignore.bak
+
+# Archivos de configuración de servidor web
+public/.htaccess.bak
+public/web.config.bak
+
+# Archivos de configuración de seguridad
+security.log
+auth.log
+admin_access.log
+
+# Archivos de configuración de email temporal
+mail.log
+smtp.log
+
+# Archivos de configuración de caché de navegador
+public/cache/
+public/temp/
+
+# Archivos de configuración de optimización
+public/optimized/
+public/compressed/
+
+# Archivos de configuración de CDN
+cdn_config.php
+cdn_cache/
+
+# Archivos de configuración de backup automático
+backups/
+auto_backup/
+
+# Archivos de configuración de monitoreo
+monitoring/
+stats/
+analytics_cache/
+
+# Archivos de configuración de desarrollo local
+local_config.php
+dev_config.php

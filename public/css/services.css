@@ -1,0 +1,256 @@
+/* CSS específico para la página de servicios - Optimizaciones */
+
+/* Optimizaciones de animaciones */
+.energy-particle {
+    will-change: opacity, transform;
+    contain: layout style paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    pointer-events: none !important;
+    z-index: 1;
+}
+
+.service-card {
+    will-change: transform;
+    contain: layout style;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Optimización para preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .energy-particle,
+    .service-card,
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Optimizaciones de carga */
+.lazy-load {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optimizaciones de contraste para accesibilidad */
+@media (prefers-contrast: high) {
+    .energy-particle {
+        opacity: 0.8 !important;
+    }
+    
+    .bg-gradient-to-br {
+        background: #1f2937 !important;
+    }
+}
+
+/* Optimizaciones de rendimiento para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .energy-particle {
+        transform: scale(0.5);
+    }
+}
+
+/* Optimizaciones específicas para móvil */
+@media (max-width: 768px) {
+    .energy-particle {
+        will-change: auto;
+        contain: none;
+    }
+    
+    .service-card {
+        will-change: auto;
+    }
+    
+    /* Reducir animaciones en móvil */
+    .energy-particle {
+        animation-duration: 2s !important;
+    }
+    
+    .service-card {
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* Efectos de ripple para botones */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Optimizaciones de accesibilidad */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Clases de utilidad para optimizaciones */
+.reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+.mobile-device .energy-particle {
+    animation-duration: 2s !important;
+}
+
+.high-contrast {
+    --text-color: #000;
+    --bg-color: #fff;
+    --border-color: #000;
+}
+
+.high-dpi .energy-particle {
+    transform: scale(0.5);
+}
+
+/* Optimizaciones de rendimiento */
+.scrolling {
+    pointer-events: none;
+}
+
+.scrolling * {
+    pointer-events: none;
+}
+
+/* Optimizaciones de fuentes */
+.fonts-loaded {
+    font-display: swap;
+}
+
+/* Optimizaciones de imágenes */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img[data-src].loaded {
+    opacity: 1;
+}
+
+/* Optimizaciones de formularios */
+form:invalid button[type="submit"] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Optimizaciones de enlaces */
+/* Removido el texto automático "(se abre en nueva ventana)" para mejor UX */
+
+/* Optimizaciones de navegación */
+.nav-focus-visible:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Optimizaciones de contraste dinámico */
+@media (prefers-contrast: high) {
+    .bg-gradient-to-br {
+        background: linear-gradient(to bottom right, #1f2937, #374151) !important;
+    }
+    
+    .text-white {
+        color: #000 !important;
+    }
+    
+    .bg-white {
+        background: #000 !important;
+    }
+}
+
+/* Optimizaciones de rendimiento para dispositivos de baja potencia */
+@media (prefers-reduced-data: reduce) {
+    .energy-particle {
+        display: none;
+    }
+    
+    .bg-gradient-to-br {
+        background: #f3f4f6 !important;
+    }
+}
+
+/* Asegurar que el footer tenga prioridad de interacción */
+footer {
+    position: relative;
+    z-index: 10;
+}
+
+footer * {
+    position: relative;
+    z-index: 11;
+}
+
+/* Asegurar que los enlaces del footer funcionen correctamente */
+.footer-link,
+.social-link {
+    position: relative;
+    z-index: 12;
+    pointer-events: auto !important;
+}
+
+/* Contenedores de elementos decorativos */
+.absolute.pointer-events-none {
+    z-index: 1;
+}
+
+/* Asegurar que elementos interactivos mantengan su funcionalidad */
+nav,
+.navbar,
+.nav-link,
+.service-card,
+button,
+a:not(.energy-particle),
+.group {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 5;
+}
+
+/* Elementos que deben ser interactivos */
+[class*="hover:"],
+[class*="group"],
+button,
+a,
+.nav-link,
+.service-card {
+    pointer-events: auto !important;
+}
+
+/* Asegurar que el navbar tenga prioridad */
+nav {
+    z-index: 50 !important;
+}
+
+/* Asegurar que los elementos con hover funcionen */
+*:hover {
+    pointer-events: auto !important;
+}
