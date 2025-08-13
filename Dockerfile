@@ -42,8 +42,12 @@ RUN mkdir -p logs admin cache && \
 RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
 
-# Copiar configuración personalizada de Apache
-COPY apache.conf /etc/apache2/sites-available/000-default.conf
+# Configurar Apache para servir desde el directorio public
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf && \
+    echo '<Directory /var/www/html/public>' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    AllowOverride All' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '    Require all granted' >> /etc/apache2/sites-available/000-default.conf && \
+    echo '</Directory>' >> /etc/apache2/sites-available/000-default.conf
 
 # Exponer puerto
 EXPOSE 80
