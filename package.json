@@ -4,7 +4,8 @@
   "description": "Sitio web moderno con HTML, Tailwind CSS y PHP",
   "scripts": {
     "build": "npx tailwindcss -i ./src/css/input.css -o ./public/css/style.css --watch",
-    "build-prod": "npx tailwindcss -i ./src/css/input.css -o ./public/css/style.css --minify"
+    "build-prod": "npx tailwindcss -i ./src/css/input.css -o ./public/css/style.css --minify",
+    "postinstall": "curl -sS https://getcomposer.org/installer | php && php composer.phar install"
   },
   "dependencies": {
     "tailwindcss": "^3.4.0"
