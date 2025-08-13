@@ -36,18 +36,16 @@ RUN npm run build-prod
 # Instalar dependencias de PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Crear directorios necesarios con permisos correctos
+# Crear directorios necesarios y configurar permisos FINALES
 RUN mkdir -p logs admin cache && \
-    chown -R www-data:www-data logs admin cache && \
-    chmod -R 755 logs && \
-    chmod -R 777 admin && \
-    chmod -R 755 cache
-
-# Configurar permisos
-RUN chown -R www-data:www-data /var/www/html && \
+    chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html && \
     chmod -R 777 /var/www/html/logs && \
-    chmod -R 777 /var/www/html/admin
+    chmod -R 777 /var/www/html/admin && \
+    chmod -R 755 /var/www/html/cache
+
+# Inicializar base de datos SQLite automáticamente
+RUN php public/admin/init-db.php
 
 # Configurar Apache para servir desde el directorio public
 RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf && \
