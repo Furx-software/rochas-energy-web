@@ -43,11 +43,11 @@ $current_lang = getCurrentLanguage();
                 </div>
                 
                 <!-- Botones de acción -->
-                <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+                <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0 w-full sm:w-auto">
                     <!-- Botón Rechazar -->
                     <button 
                         id="rejectCookies"
-                        class="px-6 py-3 text-neutral-700 bg-neutral-100 hover:bg-neutral-200 rounded-xl font-medium transition-all duration-300 transform hover:scale-105"
+                        class="px-6 py-3 text-neutral-700 bg-neutral-100 hover:bg-neutral-200 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center"
                     >
                         <?php echo t('reject_button', 'cookies'); ?>
                     </button>
@@ -55,7 +55,7 @@ $current_lang = getCurrentLanguage();
                     <!-- Botón Aceptar -->
                     <button 
                         id="acceptCookies"
-                        class="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl font-medium hover:from-primary-700 hover:to-primary-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                        class="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl font-medium hover:from-primary-700 hover:to-primary-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
                     >
                         <?php echo t('accept_button', 'cookies'); ?>
                     </button>
