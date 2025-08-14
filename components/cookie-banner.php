@@ -30,7 +30,7 @@ $current_lang = getCurrentLanguage();
                             <h3 class="text-lg font-semibold text-neutral-800 mb-2">
                                 <?php echo t('title', 'cookies'); ?>
                             </h3>
-                            <p class="text-neutral-600 leading-relaxed">
+                            <p class="text-neutral-600 leading-relaxed mb-4 lg:mb-0">
                                 <?php 
                                 $description = t('description', 'cookies');
                                 $policy_link = t('policy_link', 'cookies');
@@ -43,7 +43,7 @@ $current_lang = getCurrentLanguage();
                 </div>
                 
                 <!-- Botones de acción -->
-                <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0 w-full sm:w-auto">
+                <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0 w-full sm:w-auto lg:ml-6">
                     <!-- Botón Rechazar -->
                     <button 
                         id="rejectCookies"

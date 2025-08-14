@@ -56,5 +56,22 @@ RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /e
 # Exponer puerto
 EXPOSE 80
 
+# Crear script de inicialización automática
+RUN echo '#!/bin/bash\n\
+echo "🚀 Iniciando Rochas Energy..."\n\
+\n\
+# Verificar si la base de datos existe\n\
+if [ ! -f /var/www/html/admin/users.db ]; then\n\
+    echo "🔧 Inicializando base de datos..."\n\
+    php /var/www/html/setup-db.php\n\
+    echo "✅ Base de datos inicializada"\n\
+else\n\
+    echo "✅ Base de datos ya existe"\n\
+fi\n\
+\n\
+echo "🌐 Iniciando Apache..."\n\
+exec apache2-foreground' > /usr/local/bin/start.sh && \
+chmod +x /usr/local/bin/start.sh
+
 # Comando de inicio
-CMD ["apache2-foreground"]
+CMD ["/usr/local/bin/start.sh"]

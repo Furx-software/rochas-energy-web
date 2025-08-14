@@ -9,24 +9,37 @@ echo "🔧 Inicializando base de datos Rochas Energy...\n\n";
 // Verificar si ya existe la base de datos
 $db_path = '/var/www/html/admin/users.db';
 
+// Detectar si estamos en Render
+$is_render = getenv("RENDER") !== false;
+if ($is_render) {
+    echo "🌐 Detectado entorno Render\n";
+}
+
 if (file_exists($db_path)) {
     echo "✅ La base de datos ya existe en: $db_path\n";
     echo "📊 Tamaño: " . filesize($db_path) . " bytes\n";
     echo "📅 Última modificación: " . date('Y-m-d H:i:s', filemtime($db_path)) . "\n\n";
     
-    echo "¿Quieres recrear la base de datos? (y/N): ";
-    $handle = fopen("php://stdin", "r");
-    $line = fgets($handle);
-    fclose($handle);
-    
-    if (trim(strtolower($line)) !== 'y') {
-        echo "❌ Operación cancelada.\n";
-        exit(0);
+    // En Render, no preguntar, solo recrear
+    if ($is_render) {
+        echo "🔄 Recreando base de datos en Render...\n";
+        unlink($db_path);
+        echo "🗑️ Base de datos anterior eliminada.\n\n";
+    } else {
+        echo "¿Quieres recrear la base de datos? (y/N): ";
+        $handle = fopen("php://stdin", "r");
+        $line = fgets($handle);
+        fclose($handle);
+        
+        if (trim(strtolower($line)) !== 'y') {
+            echo "❌ Operación cancelada.\n";
+            exit(0);
+        }
+        
+        // Eliminar base de datos existente
+        unlink($db_path);
+        echo "🗑️ Base de datos anterior eliminada.\n\n";
     }
-    
-    // Eliminar base de datos existente
-    unlink($db_path);
-    echo "🗑️ Base de datos anterior eliminada.\n\n";
 }
 
 // Crear directorio admin si no existe
