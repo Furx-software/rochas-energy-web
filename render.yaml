@@ -10,9 +10,16 @@ services:
         value: 8.1
       - key: APACHE_DOCUMENT_ROOT
         value: /var/www/html/public
+      - key: RENDER
+        value: true
+      - key: APACHE_RUN_USER
+        value: www-data
+      - key: APACHE_RUN_GROUP
+        value: www-data
     disk:
       name: sqlite-data
       mountPath: /var/www/html/admin
       sizeGB: 1
-    healthCheckPath: /
+    healthCheckPath: /health.php
     autoDeploy: true
+    plan: starter
