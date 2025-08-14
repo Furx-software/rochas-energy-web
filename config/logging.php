@@ -7,7 +7,7 @@
 // Configuración de logging
 $logging_config = [
     'enabled' => true,
-    'log_directory' => (getenv("RENDER") !== false) ? "/opt/render/project/src/logs" : "/var/www/html/logs",
+    'log_directory' => "/var/www/html/logs",
     'max_log_size' => 10 * 1024 * 1024, // 10MB
     'max_log_files' => 5,
     'log_levels' => [
@@ -53,22 +53,29 @@ function logMessage($message, $level = 'INFO', $category = 'general', $context =
     
     // Crear directorio de logs si no existe
     $log_dir = $logging_config['log_directory'];
+    
+    // Intentar crear el directorio principal
     if (!is_dir($log_dir)) {
-        if (!mkdir($log_dir, 0755, true)) {
-            // Si no se puede crear el directorio, usar un directorio temporal
+        if (!@mkdir($log_dir, 0777, true)) {
+            // Si falla, usar directorio temporal
             $log_dir = sys_get_temp_dir() . '/rochas_logs';
             if (!is_dir($log_dir)) {
-                mkdir($log_dir, 0755, true);
+                @mkdir($log_dir, 0777, true);
             }
         }
     }
     
     // Verificar permisos de escritura
     if (!is_writable($log_dir)) {
-        // Si no es escribible, usar directorio temporal
-        $log_dir = sys_get_temp_dir() . '/rochas_logs';
-        if (!is_dir($log_dir)) {
-            mkdir($log_dir, 0755, true);
+        // Intentar cambiar permisos
+        @chmod($log_dir, 0777);
+        
+        // Si aún no es escribible, usar directorio temporal
+        if (!is_writable($log_dir)) {
+            $log_dir = sys_get_temp_dir() . '/rochas_logs';
+            if (!is_dir($log_dir)) {
+                @mkdir($log_dir, 0777, true);
+            }
         }
     }
     

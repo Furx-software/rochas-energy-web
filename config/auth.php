@@ -6,7 +6,7 @@
 
 // Configuración de autenticación
 $auth_config = [
-    'db_path' => (getenv("RENDER") !== false) ? "/opt/render/project/src/admin/users.db" : "admin/users.db",
+    'db_path' => "/var/www/html/admin/users.db",
     'session_timeout' => 3600, // 1 hora
     'max_login_attempts' => 5,
     'lockout_duration' => 900, // 15 minutos
@@ -25,7 +25,10 @@ function initAuthDatabase() {
     
     // Crear directorio si no existe
     if (!is_dir($db_dir)) {
-        mkdir($db_dir, 0755, true);
+        if (!@mkdir($db_dir, 0777, true)) {
+            error_log("No se pudo crear el directorio de la base de datos: $db_dir");
+            return false;
+        }
     }
     
     try {
